@@ -1,0 +1,10 @@
+
+<% if !@entry.errors.any? %>
+  <h2> SUCCESS! </h2>
+  <h4> Your <%=@entry.class.to_s.downcase %> - "<%=@entry.name %>" has been added to the database </h4>
+<% else %>
+  <h2> FAILURE! </h2>
+  <h4> <%=@entry.errors.full_messages.each {|x| puts x} %> </h4>
+<% end %>
+
+<a href="/"><p> Return to homepage </p></a>

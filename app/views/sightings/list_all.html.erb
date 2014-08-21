@@ -1,0 +1,35 @@
+<div style="margin: 0 auto;width:500px;margin-top:50px">
+  <h1 style="text-decoration:underline"> WILDLIFE TRACKER </h1>
+  <div style="margin: 0 auto;width:350px">
+
+    <h3> Species List </h3>
+      <ul style="padding-left:15px">
+      <% @species.each do |spec| %>
+        <a href="/species/<%= spec.name %>/<%= spec.id%>"><li> <%= spec.name %> </li></a>
+      <% end %>
+      </ul>
+
+    <h3> Locations List </h3>
+      <ul style="padding-left:15px">
+      <% @locations.each do |location| %>
+        <a href="/species/<%= location.name %>/<%= location.id%>"><li> <%= location.name %> </li></a>
+      <% end %>
+      </ul>
+
+    <h3> Recent Sightings </h3>
+      <ul style="padding-left:15px">
+      <% if @sightings != nil %>
+        <% @sightings.each do |sighting| %>
+          <li> <%=Species.find(sighting.species_id).name%> @
+               <%=Location.find(sighting.location_id).name%> --
+               <%= sighting.created_at.strftime("%m-%d / %H:%M") %>
+          </li>
+        <% end %>
+      <% end %>
+      </ul>
+      <a href="/"><p> Return to homepage </p></a>
+  </div>
+</div>
+
+
+
